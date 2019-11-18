@@ -1,5 +1,3 @@
-package com.mitashgaurh.thefalconsaviorprivate;
-
 import greenfoot.World;
 
 /**
