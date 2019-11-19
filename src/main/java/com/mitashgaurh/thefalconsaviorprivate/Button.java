@@ -1,9 +1,6 @@
-package com.mitashgaurh.thefalconsaviorprivate;
-
 import greenfoot.Actor;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
-import greenfoot.World;
 
 /**
  * Write a description of class Button here.
@@ -11,58 +8,35 @@ import greenfoot.World;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Button extends Actor {
+public class Button extends Actor implements IMenuInvoker {
 
-    private String type;
-    private World world;
+    private IMenuCommand menuCommand;
 
-    public Button(String type) {
+    public Button(Type buttonType) {
         //normal constructor for button(no world declaration)
-        this.type = type;
-        setPicture();
-
+        setPicture(buttonType);
     }
 
-    public Button(String type, World world) {
-        //button constructor that lets you choose which world its in
-        this(type);
-        this.world = world;
-    }
-
-    public Button(String type, World world, GreenfootImage image) {
-        this.type = type;
-        this.world = world;
-        setImage(image);
-    }
-
-    public void setPicture() {
+    private void setPicture(Type buttonType) {
         //sets pictures of buttons
-        switch (type) {
-
-            case "newgame":
-                setImage(new GreenfootImage("New Game", 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0)));
+        GreenfootImage greenfootImage;
+        switch (buttonType) {
+            case SINGLE_PLAYER:
+                greenfootImage = new GreenfootImage("1 PLAYER GAME", 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0));
                 break;
-            case "help":
-                setImage(new GreenfootImage("Help", 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0)));
+            case MULTI_PLAYER:
+                greenfootImage = new GreenfootImage("2 PLAYER GAME", 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0));
                 break;
-            case "credits":
-                setImage(new GreenfootImage("Credit", 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0)));
+            case HELP:
+                greenfootImage = new GreenfootImage("HELP", 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0));
                 break;
-
-            //For Reference, no use till now
-            case "teancodetext":
-                setImage(new GreenfootImage("Made by TeaNCode, Copyright 2016", 12, Color.WHITE, new Color(0, 0, 0, 0)));
-                setLocation(87, 25);
+            case CREDITS:
+                greenfootImage = new GreenfootImage("CREDITS", 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0));
                 break;
-            case "world":
-                setImage(new GreenfootImage("Continue", 60, Color.LIGHT_GRAY, new Color(0, 0, 0, 0)));
-                break;
-            case "teacup":
-                setImage(new GreenfootImage("tecup.png"));
-                setLocation(25, 15);
-                break;
-
+            default:
+                throw new IllegalStateException("Unexpected value: " + buttonType);
         }
+        setImage(greenfootImage);
     }
 
     /**
@@ -71,5 +45,25 @@ public class Button extends Actor {
      */
     public void act() {
         // Add your action code here.
+        click();
+    }
+
+    @Override
+    public void click() {
+        if (null != menuCommand)
+            menuCommand.executeCommand();
+    }
+
+    @Override
+    public void setMenuCommand(IMenuCommand menuCommand) {
+        this.menuCommand = menuCommand;
+    }
+
+    public enum Type {
+        SINGLE_PLAYER,
+        MULTI_PLAYER,
+        TOGGLE_SOUND,
+        HELP,
+        CREDITS
     }
 }

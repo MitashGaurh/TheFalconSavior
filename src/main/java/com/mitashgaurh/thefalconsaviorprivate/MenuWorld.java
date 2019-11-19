@@ -1,5 +1,5 @@
-package com.mitashgaurh.thefalconsaviorprivate;
-
+import greenfoot.Greenfoot;
+import greenfoot.GreenfootImage;
 import greenfoot.World;
 
 /**
@@ -10,18 +10,89 @@ import greenfoot.World;
  */
 public class MenuWorld extends World {
 
+    private Button singlePlayerButton;
+    private Button twoPlayerButton;
+    private Button helpButton;
+    private Button creditsButton;
+
     /**
      * Constructor for objects of class MenuWorld.
      */
     public MenuWorld() {
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1);
-        setBackground("star_wars_background_4.png");
-        addObject(new Button("newgame"), getWidth() / 3, 150);
-        addObject(new Button("help"), getWidth() / 3, 200);
-        addObject(new Button("credits"), getWidth() / 3, 250);
+        // Create a new world with 1000x800 cells with a cell size of 1x1 pixels.
+        super(1000, 800, 1);
+        scaleBackground();
+        Greenfoot.setWorld(this);
 
-        //Greenfoot.start();
+        singlePlayerButton = new Button(Button.Type.SINGLE_PLAYER);
+        twoPlayerButton = new Button(Button.Type.MULTI_PLAYER);
+        helpButton = new Button(Button.Type.HELP);
+        creditsButton = new Button(Button.Type.CREDITS);
 
+        instantiate();
+    }
+
+    private void scaleBackground() {
+        GreenfootImage backgroundImage = getBackground();
+        backgroundImage.scale(1000, 800);
+        setBackground(backgroundImage);
+    }
+
+    private void instantiate() {
+        setupMenuCommand();
+
+        addObject(singlePlayerButton, getWidth() / 4, 120);
+        addObject(twoPlayerButton, getWidth() / 4, 160);
+        addObject(helpButton, getWidth() / 4, 200);
+        addObject(creditsButton, getWidth() / 4, 240);
+    }
+
+    private void setupMenuCommand() {
+        IMenuCommand singlePlayerCommand = new MenuCommand();
+        IMenuCommand twoPlayerCommand = new MenuCommand();
+        IMenuCommand helpCommand = new MenuCommand();
+        IMenuCommand creditsCommand = new MenuCommand();
+
+        singlePlayerCommand.setReceiver(new IMenuReceiver() {
+            @Override
+            public void performAction() {
+                
+                if(Greenfoot.mouseClicked(singlePlayerButton))
+                {
+                    Greenfoot.setWorld(new GameWorld());
+                }
+                
+            }
+        });
+
+        twoPlayerCommand.setReceiver(new IMenuReceiver() {
+            @Override
+            public void performAction() {
+
+            }
+        });
+
+        helpCommand.setReceiver(new IMenuReceiver() {
+            @Override
+            public void performAction() {
+
+            }
+        });
+
+        creditsCommand.setReceiver(new IMenuReceiver() {
+            @Override
+            public void performAction() {
+
+            }
+        });
+        singlePlayerButton.setMenuCommand(singlePlayerCommand);
+        twoPlayerButton.setMenuCommand(twoPlayerCommand);
+        helpButton.setMenuCommand(helpCommand);
+        creditsButton.setMenuCommand(creditsCommand);
+    }
+    
+    public void act()
+    {
+        
     }
 }
