@@ -30,6 +30,7 @@ public class MenuWorld extends World {
         creditsButton = new Button(Button.Type.CREDITS);
 
         instantiate();
+        Greenfoot.start();
     }
 
     private void scaleBackground() {
@@ -64,7 +65,8 @@ public class MenuWorld extends World {
         twoPlayerCommand.setReceiver(new IMenuReceiver() {
             @Override
             public void performAction() {
-
+                SoundController.getInstance().stopMenuBackgroundMusic();
+                Greenfoot.setWorld(new GameWorld());
             }
         });
 
