@@ -22,6 +22,11 @@ public class Rocket extends Leaf
     {
         // Add your action code here.
         this.setLocation(getX(), getY() - 4);
+
+        if(this.isTouching(EnemyShip.class))
+        {
+            removeTouching(EnemyShip.class);
+        }
         
         if(getY() <= 0)
         {
