@@ -1,17 +1,20 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
 /**
  * Write a description of class Rocket here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Rocket extends Leaf {
+public class Rocket extends Leaf implements IScoreSubject {
     /**
      * Act - do whatever the Rocket wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private IScoreObserver observer;
+
     Rocket(int x, int y) {
         super(x, y, LeafFactory.getLeafType("Rocket", "rocket.png", null));
-        getImage().scale(10, 10);
     }
 
     public void act() {
@@ -22,11 +25,30 @@ public class Rocket extends Leaf {
             removeTouching(EnemyShip.class);
             inWorld = false;
             getWorld().removeObject(this);
+
+            notifyupdate();
         }
 
         if (inWorld && getY() <= 0) {
             getWorld().removeObject(this);
             inWorld = false;
         }
+    }
+
+    public void display(World world) {
+        inWorld = true;
+        super.display(world);
+    }
+
+    public void addObserver(IScoreObserver observer) {
+        this.observer = observer;
+    }
+
+    public void removeObserver(IScoreObserver observer) {
+        this.observer = null;
+    }
+
+    public void notifyupdate() {
+        observer.scoreUpdate();
     }
 }

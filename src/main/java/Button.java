@@ -1,7 +1,4 @@
-import greenfoot.Actor;
-import greenfoot.Color;
-import greenfoot.Greenfoot;
-import greenfoot.GreenfootImage;
+import greenfoot.*;
 
 /**
  * Write a description of class Button here.
@@ -34,6 +31,9 @@ public class Button extends Actor implements IMenuInvoker {
             case CREDITS:
                 greenfootImage = new GreenfootImage("CREDITS", 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0));
                 break;
+            case CONTINUE:
+                greenfootImage = new GreenfootImage("CONTINUE", 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0));
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + buttonType);
         }
@@ -49,7 +49,6 @@ public class Button extends Actor implements IMenuInvoker {
         if (Greenfoot.mouseClicked(this)) {
             click();
         }
-
     }
 
     @Override
@@ -68,6 +67,7 @@ public class Button extends Actor implements IMenuInvoker {
         MULTI_PLAYER,
         TOGGLE_SOUND,
         HELP,
-        CREDITS
+        CREDITS,
+        CONTINUE
     }
 }

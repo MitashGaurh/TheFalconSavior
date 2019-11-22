@@ -1,3 +1,4 @@
+
 public interface IMenuInvoker {
 
     void click();

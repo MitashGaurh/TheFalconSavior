@@ -1,5 +1,4 @@
-import greenfoot.GreenfootImage;
-import greenfoot.World;
+import greenfoot.*;
 
 /**
  * Write a description of class GameWorld here.
@@ -25,7 +24,12 @@ class GameWorld extends World {
 
         gameScreen.addChild(level);
         gameScreen.addChild(enemyGroup);
-        gameScreen.addChild(new MillenniumFalcon(500, 700));
+
+        Player firstplayer = new Player1(500, 700);
+        Player secondplayer = new Player2(400, 700);
+
+        gameScreen.addChild(firstplayer);
+        gameScreen.addChild(secondplayer);
         gameScreen.display(this);
     }
 
