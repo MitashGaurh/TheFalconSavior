@@ -6,20 +6,21 @@ import greenfoot.World;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class RocketDecorator extends SoundDecorator {
+public class DualSoundDecorator extends SoundDecorator {
     /**
      * Constructor for objects of class EnemyShipDecorator
      */
-    RocketDecorator(IComponent component) {
+    DualSoundDecorator(IComponent component) {
         super(component);
     }
 
-    public void enableSound() {
-        component.enableSound();
+    @Override
+    public void enableSound(boolean hasFire, boolean hasCollision) {
+        component.enableSound(hasFire, hasCollision);
     }
 
     public void display(World world) {
-        enableSound();
+        enableSound(true, true);
         component.display(world);
     }
 }

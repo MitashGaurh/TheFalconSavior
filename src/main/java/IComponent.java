@@ -9,7 +9,7 @@ public interface IComponent {
 
     void addChildren(List<IComponent> components);
 
-    void enableSound();
+    void enableSound(boolean hasFire, boolean hasCollision);
 
     void display(World world);
 }

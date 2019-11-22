@@ -14,7 +14,8 @@ public class Leaf extends Actor implements IComponent {
     private int x;
     private int y;
     private LeafType leafType;
-    private boolean isSoundEnabled = false;
+    private boolean hasFireSound = false;
+    private boolean hasCollisionSound = false;
 
     /**
      * Constructor for objects of class Leaf
@@ -38,8 +39,10 @@ public class Leaf extends Actor implements IComponent {
         //Ignore at root leaf.
     }
 
-    public void enableSound() {
-        this.isSoundEnabled = true;
+    @Override
+    public void enableSound(boolean hasFire, boolean hasCollision) {
+        this.hasFireSound = hasFire;
+        this.hasCollisionSound = hasCollision;
     }
 
     public void display(World world) {

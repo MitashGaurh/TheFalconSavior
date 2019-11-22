@@ -7,13 +7,13 @@ import java.util.List;
  * @version (a version number or a date)
  */
 public abstract class SoundDecorator implements IComponent {
-    protected IComponent component;
+    IComponent component;
 
     /**
      * Constructor for objects of class SoundDecorator
      */
 
-    public SoundDecorator(IComponent component) {
+    SoundDecorator(IComponent component) {
         this.component = component;
     }
 

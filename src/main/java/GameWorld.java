@@ -26,8 +26,8 @@ class GameWorld extends World {
         gameScreen.addChild(level);
         gameScreen.addChild(enemyGroup);
 
-        Player firstplayer = new Player1(500, 700);
-        Player secondplayer = new Player2(400, 700);
+        PlayerShip firstplayer = new PlayerShip1(500, 700);
+        PlayerShip secondplayer = new PlayerShip2(400, 700);
 
         gameScreen.addChild(firstplayer);
         gameScreen.addChild(secondplayer);

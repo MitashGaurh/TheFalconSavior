@@ -22,7 +22,8 @@ public class Component implements IComponent {
         this.components.addAll(components);
     }
 
-    public void enableSound() {
+    @Override
+    public void enableSound(boolean hasFire, boolean hasCollision) {
         // Handle at root level
     }
 

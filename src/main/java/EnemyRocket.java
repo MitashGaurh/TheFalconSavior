@@ -19,8 +19,8 @@ public class EnemyRocket extends Leaf {
         // Add your action code here.
         this.setLocation(getX(), getY() + 4);
 
-        if (this.isTouching(Player.class) || this.isTouching(Rocket.class)) {
-            removeTouching(Player.class);
+        if (this.isTouching(PlayerShip.class) || this.isTouching(Rocket.class)) {
+            removeTouching(PlayerShip.class);
             removeTouching(Rocket.class);
             inWorld = false;
             getWorld().removeObject(this);
