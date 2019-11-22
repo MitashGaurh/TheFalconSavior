@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.World;
 
 /**
  * Write a description of class Rocket here.
@@ -26,7 +26,7 @@ public class Rocket extends Leaf implements IScoreSubject {
             inWorld = false;
             getWorld().removeObject(this);
 
-            notifyupdate();
+            notifyObserver();
         }
 
         if (inWorld && getY() <= 0) {
@@ -48,7 +48,7 @@ public class Rocket extends Leaf implements IScoreSubject {
         this.observer = null;
     }
 
-    public void notifyupdate() {
+    public void notifyObserver() {
         observer.scoreUpdate();
     }
 }

@@ -1,4 +1,5 @@
-import greenfoot.*;
+import greenfoot.GreenfootImage;
+import greenfoot.World;
 
 /**
  * Write a description of class GameWorld here.

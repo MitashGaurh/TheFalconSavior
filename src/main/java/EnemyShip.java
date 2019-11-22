@@ -11,9 +11,7 @@ public class EnemyShip extends Leaf {
     private int direction = 1;
 
     EnemyShip(int x, int y) {
-
         super(x, y, LeafFactory.getLeafType("EnemyShip", "enemy_ship.png", null));
-
     }
 
     public void act() {

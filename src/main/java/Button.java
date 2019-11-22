@@ -1,4 +1,7 @@
-import greenfoot.*;
+import greenfoot.Actor;
+import greenfoot.Color;
+import greenfoot.Greenfoot;
+import greenfoot.GreenfootImage;
 
 /**
  * Write a description of class Button here.
