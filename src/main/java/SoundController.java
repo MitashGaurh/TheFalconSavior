@@ -22,6 +22,7 @@ public class SoundController {
 
     public void playMenuBackgroundMusic() {
         menuBackgroundMusic.playLoop();
+        //menuBackgroundMusic.play();
     }
 
     public void stopMenuBackgroundMusic() {

@@ -1,39 +1,35 @@
-import greenfoot.*;
-import java.util.*;
+import greenfoot.World;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Write a description of class EnemyTroops here.
- * 
- * @author (your name) 
+ * @author (your name)
  * @version (a version number or a date)
  */
-public class Component implements IComponent  
-{
-    // instance variables - replace the example below with your own
-   
-    
+public class Component implements IComponent {
+
     private ArrayList<IComponent> components = new ArrayList<>();
 
-    
-    public Component()
-    {
+    Component() {
     }
-  
-    public void addChild(IComponent c)
-    {
-        components.add(c);
+
+    public void addChild(IComponent component) {
+        components.add(component);
     }
-    
-    public void removeChild(IComponent c)
-    {
-        components.remove(c);
+
+    public void addChildren(List<IComponent> components) {
+        this.components.addAll(components);
     }
-    
-    public void display()
-    {
-       for(IComponent c: components)
-            {
-                c.display();
-            }
-        
+
+    public void enableSound() {
+        // Handle at root level
+    }
+
+    public void display(World world) {
+        for (IComponent component : components) {
+            component.display(world);
+        }
+
     }
 }

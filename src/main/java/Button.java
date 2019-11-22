@@ -13,7 +13,7 @@ public class Button extends Actor implements IMenuInvoker {
 
     private IMenuCommand menuCommand;
 
-    public Button(Type buttonType) {
+    Button(Type buttonType) {
         //normal constructor for button(no world declaration)
         setPicture(buttonType);
     }
@@ -49,6 +49,7 @@ public class Button extends Actor implements IMenuInvoker {
         if (Greenfoot.mouseClicked(this)) {
             click();
         }
+
     }
 
     @Override
