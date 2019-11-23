@@ -37,6 +37,9 @@ public class Button extends Actor implements IMenuInvoker {
             case CONTINUE:
                 greenfootImage = new GreenfootImage("CONTINUE", 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0));
                 break;
+            case EXIT:
+                greenfootImage = new GreenfootImage("EXIT", 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0));
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + buttonType);
         }
@@ -71,6 +74,7 @@ public class Button extends Actor implements IMenuInvoker {
         TOGGLE_SOUND,
         HELP,
         CREDITS,
-        CONTINUE
+        CONTINUE,
+        EXIT
     }
 }

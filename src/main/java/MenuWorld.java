@@ -58,7 +58,7 @@ public class MenuWorld extends World {
             @Override
             public void performAction() {
                 SoundController.getInstance().stopMenuBackgroundMusic();
-                Greenfoot.setWorld(new GameWorld(false));
+                Greenfoot.setWorld(new GameWorld());
             }
         });
 
@@ -66,13 +66,15 @@ public class MenuWorld extends World {
             @Override
             public void performAction() {
                 SoundController.getInstance().stopMenuBackgroundMusic();
-                Greenfoot.setWorld(new GameWorld(true));
+                Greenfoot.setWorld(new GameWorld());
             }
         });
 
         helpCommand.setReceiver(new IMenuReceiver() {
             @Override
             public void performAction() {
+                SoundController.getInstance().stopMenuBackgroundMusic();
+                Greenfoot.setWorld(new Help());
 
             }
         });

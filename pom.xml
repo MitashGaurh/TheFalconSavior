@@ -14,7 +14,6 @@
             <url>https://nexus.gammel.cloud/repository/maven-public/</url>
         </repository>
     </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.greenfoot</groupId>
