@@ -11,7 +11,7 @@ public class EnemyShip1 extends EnemyShip {
     private int rocketWaitLock = 0;
 
     EnemyShip1(int direction, int x, int y) {
-        super(direction, x, y, LeafFactory.getLeafType("EnemyShip1", "enemy_ship_1.png", null));
+        super(direction, x, y, LeafFactory.getLeafType("EnemyShip1", "enemy_ship_1.png", null, null));
     }
 
     public void act() {
@@ -33,7 +33,7 @@ public class EnemyShip1 extends EnemyShip {
             rocketWaitLock = 300 + Greenfoot.getRandomNumber(600);
             IProjectile rocket = new EnemyRocket(getX(), getY() + 10);
             rocket.addProjectileOwner(this);
-            IComponent wrappedRocket = new DualSoundDecorator((IComponent) rocket);
+            IComponent wrappedRocket = new CollisionSoundDecorator((IComponent) rocket);
             wrappedRocket.display(getWorld());
         }
     }
