@@ -6,9 +6,9 @@
  */
 public class LifeGroup extends Component implements IPlayerEventHandler {
     private IPlayerEventHandler nextHandler;
-    
+
     private ILifeStateMachine lifeStateMachine;
-    
+
     LifeGroup(ILifeStateMachine machine) {
         this.lifeStateMachine = machine;
     }
@@ -29,7 +29,7 @@ public class LifeGroup extends Component implements IPlayerEventHandler {
         if (event == Event.LIFE) {
             IComponent removedComponent = removeLastComponent();
             if (null != removedComponent) {
-                if(removedComponent instanceof Life) {
+                if (removedComponent instanceof Life) {
                     ((Life) removedComponent).removeLife();
                     this.lifeStateMachine.onPlayerHit();
                 }
@@ -38,7 +38,7 @@ public class LifeGroup extends Component implements IPlayerEventHandler {
             this.nextHandler.handleEvent(event);
         }
     }
-    
+
     IComponent removeLastComponent() {
         IComponent component = null;
         if (getComponents().size() > 0) {

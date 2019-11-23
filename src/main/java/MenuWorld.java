@@ -82,7 +82,7 @@ public class MenuWorld extends World {
         creditsCommand.setReceiver(new IMenuReceiver() {
             @Override
             public void performAction() {
-
+                Greenfoot.setWorld(new ChartWorld());
             }
         });
 

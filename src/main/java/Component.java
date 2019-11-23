@@ -1,4 +1,4 @@
- import greenfoot.World;
+import greenfoot.World;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class Component implements IComponent {
             component.display(world);
         }
     }
-    
+
     ArrayList<IComponent> getComponents() {
         return components;
     }

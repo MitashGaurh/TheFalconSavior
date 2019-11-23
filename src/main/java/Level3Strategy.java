@@ -8,10 +8,10 @@ import java.util.List;
  * @version (a version number or a date)
  */
 public class Level3Strategy implements ILevelStrategy {
-    
+
     private int targetScore = 0;
-    
-    public int getTargetScore(){
+
+    public int getTargetScore() {
         return targetScore;
     }
 

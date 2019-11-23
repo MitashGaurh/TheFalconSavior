@@ -39,7 +39,7 @@ public class Button extends Actor implements IMenuInvoker {
                 break;
             case EXIT:
                 greenfootImage = new GreenfootImage("EXIT", 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0));
-                break;   
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + buttonType);
         }

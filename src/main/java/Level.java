@@ -18,13 +18,13 @@ public class Level extends Leaf implements ILevelSubject {
 
     List<IComponent> getEnemyTroops() {
         List<IComponent> troops = currentStrategy.getTroops();
-        targetScore = currentStrategy.getTargetScore();
+        targetScore += currentStrategy.getTargetScore();
         return troops;
     }
-    
-    void levelIncrementCheck(int score){
+
+    void levelIncrementCheck(int score) {
         currentScore += score;
-        if(targetScore == currentScore){
+        if (targetScore == currentScore) {
             setLevelForStrategy(++level);
             notifyObserver();
             act();
@@ -48,19 +48,19 @@ public class Level extends Leaf implements ILevelSubject {
     public void act() {
         setImage(new GreenfootImage("Level : " + level, 20, Color.GREEN, Color.BLACK, Color.YELLOW));
     }
-    
-    public void addObserver(ILevelObserver observer){
+
+    public void addObserver(ILevelObserver observer) {
         this.levelObserver = observer;
     }
-    
-    public void removeObserver(ILevelObserver observer){
-        if(this.levelObserver == observer){
+
+    public void removeObserver(ILevelObserver observer) {
+        if (this.levelObserver == observer) {
             this.levelObserver = null;
         }
     }
-    
-    public void notifyObserver(){
-        if(null != levelObserver) {
+
+    public void notifyObserver() {
+        if (null != levelObserver) {
             levelObserver.onLevelIncreased();
         }
     }

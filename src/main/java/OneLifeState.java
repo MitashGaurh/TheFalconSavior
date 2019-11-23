@@ -16,9 +16,9 @@ public class OneLifeState implements ILifeState {
     public void onPlayerHit() {
         machine.gameOver();
     }
-    
+
     @Override
     public void onLifeUp() {
-        machine.setStateTwoLifeState();    
+        machine.setStateTwoLifeState();
     }
 }

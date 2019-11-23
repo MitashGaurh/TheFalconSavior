@@ -17,7 +17,7 @@ public class Life extends Leaf {
     public void act() {
         // Add your action code here.
     }
-    
+
     void removeLife() {
         getWorld().removeObject(this);
     }

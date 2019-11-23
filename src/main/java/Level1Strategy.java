@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Level1Strategy implements ILevelStrategy {
-    
+
     private int targetScore = 0;
-    
-    public int getTargetScore(){
+
+    public int getTargetScore() {
         return targetScore;
     }
 

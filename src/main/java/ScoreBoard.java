@@ -21,7 +21,6 @@ public class ScoreBoard extends Leaf implements IPlayerEventHandler {
         this.level = level;
     }
 
-
     public void act() {
         // Add your action code here.
         updateScore();
@@ -32,7 +31,7 @@ public class ScoreBoard extends Leaf implements IPlayerEventHandler {
         setImage(img);
     }
 
-    public void scoreUpdate() {
+    private void scoreUpdate() {
         this.score += 10;
         level.levelIncrementCheck(10);
     }
@@ -55,5 +54,9 @@ public class ScoreBoard extends Leaf implements IPlayerEventHandler {
         } else if (null != nextHandler) {
             this.nextHandler.handleEvent(event);
         }
+    }
+
+    int getScore() {
+        return score;
     }
 }

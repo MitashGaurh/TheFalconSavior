@@ -18,6 +18,6 @@ public class ThreeLifeState implements ILifeState {
 
     @Override
     public void onLifeUp() {
-            
+
     }
 }

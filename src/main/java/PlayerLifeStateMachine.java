@@ -10,7 +10,7 @@ public class PlayerLifeStateMachine implements ILifeStateMachine, ILifeStateSubj
     private TwoLifeState twoLifeState;
     private ThreeLifeState threeLifeState;
     private ILifeState currentLifeState;
-    
+
     private ILifeStateObserver observer;
 
     PlayerLifeStateMachine() {
@@ -25,7 +25,7 @@ public class PlayerLifeStateMachine implements ILifeStateMachine, ILifeStateSubj
     public void onPlayerHit() {
         currentLifeState.onPlayerHit();
     }
-    
+
     @Override
     public void gameOver() {
         notifyObserver();
@@ -45,15 +45,15 @@ public class PlayerLifeStateMachine implements ILifeStateMachine, ILifeStateSubj
     public void setStateThreeLifeState() {
         currentLifeState = threeLifeState;
     }
-    
+
     public void addObserver(ILifeStateObserver observer) {
         this.observer = observer;
     }
-    
+
     public void removeObserver(ILifeStateObserver observer) {
-        
+
     }
-    
+
     public void notifyObserver() {
         if (null != this.observer) {
             observer.gameOver();
