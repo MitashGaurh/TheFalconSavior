@@ -74,7 +74,7 @@ public class MenuWorld extends World {
             @Override
             public void performAction() {
                 SoundController.getInstance().stopMenuBackgroundMusic();
-                Greenfoot.setWorld(new Help());
+                Greenfoot.setWorld(new HelpWorld());
 
             }
         });
