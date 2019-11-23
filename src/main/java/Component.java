@@ -31,6 +31,14 @@ public class Component implements IComponent {
         for (IComponent component : components) {
             component.display(world);
         }
+    }
 
+    IComponent removeComponent() {
+        IComponent component = null;
+        if (components.size() > 0) {
+            component = components.get(components.size() - 1);
+            components.remove(component);
+        }
+        return component;
     }
 }

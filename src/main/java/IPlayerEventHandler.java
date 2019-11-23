@@ -4,9 +4,13 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public interface IScoreObserver {
-    // instance variables - replace the example below with your own
-    void scoreUpdate();
+public interface IPlayerEventHandler {
+    boolean hasNext();
 
-    void killCountUpdate();
+    IPlayerEventHandler getNext();
+
+    // instance variables - replace the example below with your own
+    void setNext(IPlayerEventHandler handler);
+
+    void handleEvent(Event event);
 }

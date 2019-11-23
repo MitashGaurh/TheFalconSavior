@@ -7,12 +7,13 @@ import greenfoot.GreenfootImage;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class ScoreBoard extends Leaf implements IScoreObserver {
+public class ScoreBoard extends Leaf implements IPlayerEventHandler {
     /**
      * Act - do whatever the ScoreBoard wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int score = 0;
+    private int score = 0;
+    private IPlayerEventHandler nextHandler;
 
     ScoreBoard(int x, int y) {
         super(x, y);
@@ -30,6 +31,26 @@ public class ScoreBoard extends Leaf implements IScoreObserver {
     }
 
     public void scoreUpdate() {
-        this.score = this.score + 1;
+        this.score += 10;
+    }
+
+    public boolean hasNext() {
+        return null != this.nextHandler;
+    }
+
+    public IPlayerEventHandler getNext() {
+        return this.nextHandler;
+    }
+
+    public void setNext(IPlayerEventHandler handler) {
+        this.nextHandler = handler;
+    }
+
+    public void handleEvent(Event event) {
+        if (event == Event.SCORE) {
+            scoreUpdate();
+        } else if (null != nextHandler) {
+            this.nextHandler.handleEvent(event);
+        }
     }
 }

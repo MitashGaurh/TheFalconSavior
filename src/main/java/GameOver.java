@@ -22,8 +22,8 @@ public class GameOver extends World {
         scaleBackground();
         GreenfootImage img = new GreenfootImage("PLAYER 1:    " + score1, 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0));
         getBackground().drawImage(img, 200, 200);
-
     }
+
 
     public GameOver(int score1, int score2) {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -33,9 +33,8 @@ public class GameOver extends World {
         GreenfootImage img2 = new GreenfootImage("PLAYER 2:  " + score2, 25, Color.GREEN, new Color(0, 0, 0, 0));
         getBackground().drawImage(img1, 200, 200);
         getBackground().drawImage(img2, 200, 400);
-
-
     }
+
 
     private void scaleBackground() {
         GreenfootImage backgroundImage = getBackground();

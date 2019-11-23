@@ -4,12 +4,10 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class ThreeLifeState implements ILifeState
-{
+public class ThreeLifeState implements ILifeState {
     private ILifeStateMachine machine;
 
-    ThreeLifeState(ILifeStateMachine m)
-    {
+    ThreeLifeState(ILifeStateMachine m) {
         machine = m;
     }
 
