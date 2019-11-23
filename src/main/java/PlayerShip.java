@@ -6,9 +6,11 @@ import greenfoot.World;
  * @author (your name)
  * @version (a version number or a date)
  */
-public abstract class PlayerShip extends Leaf {
+public abstract class PlayerShip extends Leaf implements IHitSubject {
 
     private ScoreBoard scoreBoard;
+    private Life life[];
+    private IHitObserver hitObserver;
 
     PlayerShip(int x, int y, LeafType leafType, ScoreBoard scoreBoard) {
         super(x, y, leafType);
@@ -48,4 +50,12 @@ public abstract class PlayerShip extends Leaf {
     }
 
     abstract public void control();
+
+    public void attach(IHitObserver obj) {
+        this.hitObserver = obj;
+    }
+
+    public void notifyObserver() {
+        this.hitObserver.hitEventUpdate();
+    }
 }

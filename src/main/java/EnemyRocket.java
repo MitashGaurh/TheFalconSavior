@@ -11,7 +11,7 @@ public class EnemyRocket extends Leaf {
      */
 
     EnemyRocket(int x, int y) {
-        super(x, y, LeafFactory.getLeafType("Rocket", "rocket.png", null));
+        super(x, y, LeafFactory.getLeafType("EnemyRocket", "red_laser.png", null));
         turn(180);
     }
 

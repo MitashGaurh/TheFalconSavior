@@ -14,7 +14,7 @@ public class Rocket extends Leaf implements IScoreSubject {
     private IScoreObserver observer;
 
     Rocket(int x, int y) {
-        super(x, y, LeafFactory.getLeafType("Rocket", "rocket.png", null));
+        super(x, y, LeafFactory.getLeafType("Rocket", "green_laser.png", null));
     }
 
     public void act() {

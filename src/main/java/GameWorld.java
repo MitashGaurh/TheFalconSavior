@@ -29,6 +29,12 @@ class GameWorld extends World {
         PlayerShip firstplayer = new PlayerShip1(500, 700);
         PlayerShip secondplayer = new PlayerShip2(400, 700);
 
+        PlayerLifeStateMachine playerOneLifeStatesMachine = new PlayerLifeStateMachine();
+        firstplayer.attach(playerOneLifeStatesMachine);
+
+        PlayerLifeStateMachine playerTwoLifeStatesMachine = new PlayerLifeStateMachine();
+        firstplayer.attach(playerTwoLifeStatesMachine);
+
         gameScreen.addChild(firstplayer);
         gameScreen.addChild(secondplayer);
         gameScreen.display(this);
