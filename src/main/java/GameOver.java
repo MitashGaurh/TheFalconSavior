@@ -19,6 +19,7 @@ public class GameOver extends World {
     public GameOver(int score1) {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 800, 1);
+       
         scaleBackground();
         GreenfootImage img = new GreenfootImage("PLAYER 1:    " + score1, 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0));
         getBackground().drawImage(img, 200, 200);
@@ -37,12 +38,12 @@ public class GameOver extends World {
 
 
     private void scaleBackground() {
-        GreenfootImage backgroundImage = getBackground();
-        backgroundImage.scale(1000, 800);
-        setBackground(backgroundImage);
-        getBackground().drawImage(new GreenfootImage("GAME OVER", 50, Color.BLUE, new Color(0, 0, 0, 0)), 400, 100);
+         GreenfootImage backgroundScreen = new GreenfootImage("HelpBack.png");
+        backgroundScreen.scale(1000, 800);
+        setBackground(backgroundScreen);
+        getBackground().drawImage(new GreenfootImage("GAME OVER", 50, Color.LIGHT_GRAY, new Color(0, 0, 0, 0)), 400, 100);
         ContinueButton = new Button(Button.Type.CONTINUE);
-        addObject(ContinueButton, getWidth() / 4, 120);
+        addObject(ContinueButton, 600, 600);
         IMenuCommand ContinueCommand = new MenuCommand();
         ContinueCommand.setReceiver(new IMenuReceiver() {
             @Override
