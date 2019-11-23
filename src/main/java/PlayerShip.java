@@ -47,7 +47,7 @@ public abstract class PlayerShip extends Leaf implements IPlayerEventSubject, IP
             chain = handler;
         } else {
             IPlayerEventHandler prev = chain;
-            while (handler.hasNext()) {
+            while (prev.hasNext()) {
                 prev = handler.getNext();
             }
             prev.setNext(handler);
@@ -63,14 +63,8 @@ public abstract class PlayerShip extends Leaf implements IPlayerEventSubject, IP
     public void notifyHandlers(Event event) {
         if (event == Event.LIFE) {
             if (lifeCount > 1) {
-                lifeCount--;   
+                lifeCount--;
             } else {
-                
-                if(lifeCount == 1)
-                {
-                    GameWorld gw = (GameWorld) this.getWorld();
-                    gw.gameOver();
-                }
                 getWorld().removeObject(this);
             }
         }

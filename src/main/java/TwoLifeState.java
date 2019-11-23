@@ -12,18 +12,13 @@ public class TwoLifeState implements ILifeState {
     }
 
     @Override
-    public void gotHit() {
+    public void onPlayerHit() {
         machine.setStateOneLifeState();
     }
 
     @Override
-    public void powerUp() {
-
-    }
-
-    @Override
-    public void gameOver() {
-
+    public void onLifeUp() {
+        machine.setStateThreeLifeState();
     }
 
 }

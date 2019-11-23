@@ -6,6 +6,12 @@
  */
 public class LifeGroup extends Component implements IPlayerEventHandler {
     private IPlayerEventHandler nextHandler;
+    
+    private ILifeStateMachine lifeStateMachine;
+    
+    LifeGroup(ILifeStateMachine machine) {
+        this.lifeStateMachine = machine;
+    }
 
     public boolean hasNext() {
         return null != this.nextHandler;
@@ -21,12 +27,24 @@ public class LifeGroup extends Component implements IPlayerEventHandler {
 
     public void handleEvent(Event event) {
         if (event == Event.LIFE) {
-            IComponent removedComponent = removeComponent();
-            if (null != removedComponent && removedComponent instanceof Life) {
-                ((Life) removedComponent).removeLife();
+            IComponent removedComponent = removeLastComponent();
+            if (null != removedComponent) {
+                if(removedComponent instanceof Life) {
+                    ((Life) removedComponent).removeLife();
+                    this.lifeStateMachine.onPlayerHit();
+                }
             }
         } else if (null != nextHandler) {
             this.nextHandler.handleEvent(event);
         }
+    }
+    
+    IComponent removeLastComponent() {
+        IComponent component = null;
+        if (getComponents().size() > 0) {
+            component = getComponents().get(getComponents().size() - 1);
+            getComponents().remove(component);
+        }
+        return component;
     }
 }

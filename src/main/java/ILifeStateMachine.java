@@ -6,9 +6,9 @@
  */
 public interface ILifeStateMachine {
     // instance variables - replace the example below with your own
-    void gotHit();
-
-    void powerUp();
+    void onPlayerHit();
+    
+    void gameOver();
 
     void setStateOneLifeState();
 

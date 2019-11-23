@@ -1,5 +1,3 @@
-import greenfoot.GreenfootImage;
-import greenfoot.World;
 import greenfoot.*;
 
 /**
@@ -8,7 +6,10 @@ import greenfoot.*;
  * @author (your name)
  * @version (a version number or a date)
  */
-class GameWorld extends World {
+class GameWorld extends World implements ILevelObserver, ILifeStateObserver {
+    
+    private Level level;
+    private int gameOverCounter = 1;
 
     /**
      * Constructor for objects of class GameWorld.
@@ -21,7 +22,8 @@ class GameWorld extends World {
         IComponent gameScreen = new Component();
         IComponent enemyGroup = new Component();
 
-        Level level = new Level(500, 50);
+        level = new Level(500, 50);
+        level.addObserver(this);
         enemyGroup.addChildren(level.getEnemyTroops());
 
         gameScreen.addChild(level);
@@ -30,10 +32,13 @@ class GameWorld extends World {
         PlayerShip firstPlayer = new PlayerShip1(500, 700);
 
         if (multiPlayer) {
-            firstPlayer = new PlayerShip1(550, 700);
-            PlayerShip secondPlayer = new PlayerShip2(450, 700);
-            ScoreBoard scoreBoardSecondPlayer = new ScoreBoard(750, 50);
-            LifeGroup secondPlayerLifeGroup = new LifeGroup();
+            gameOverCounter = 2;
+            firstPlayer = new PlayerShip1(450, 700);
+            PlayerShip secondPlayer = new PlayerShip2(550, 700);
+            ScoreBoard scoreBoardSecondPlayer = new ScoreBoard(750, 50, level);
+            PlayerLifeStateMachine secondPlayerStateMachine = new PlayerLifeStateMachine();
+            secondPlayerStateMachine.addObserver(this);
+            LifeGroup secondPlayerLifeGroup = new LifeGroup(secondPlayerStateMachine);
             secondPlayerLifeGroup.addChild(new Life(750, 750));
             secondPlayerLifeGroup.addChild(new Life(750, 720));
             secondPlayerLifeGroup.addChild(new Life(750, 690));
@@ -44,8 +49,10 @@ class GameWorld extends World {
             gameScreen.addChild(secondPlayerLifeGroup);
         }
 
-        ScoreBoard scoreBoardFirstPlayer = new ScoreBoard(50, 50);
-        LifeGroup firstPlayerLifeGroup = new LifeGroup();
+        ScoreBoard scoreBoardFirstPlayer = new ScoreBoard(50, 50, level);
+        PlayerLifeStateMachine firstPlayerStateMachine = new PlayerLifeStateMachine();
+        firstPlayerStateMachine.addObserver(this);
+        LifeGroup firstPlayerLifeGroup = new LifeGroup(firstPlayerStateMachine);
         firstPlayerLifeGroup.addChild(new Life(50, 750));
         firstPlayerLifeGroup.addChild(new Life(50, 720));
         firstPlayerLifeGroup.addChild(new Life(50, 690));
@@ -55,19 +62,28 @@ class GameWorld extends World {
         gameScreen.addChild(firstPlayer);
         gameScreen.addChild(scoreBoardFirstPlayer);
         gameScreen.addChild(firstPlayerLifeGroup);
+
         gameScreen.display(this);
-        
     }
-    
-    public void gameOver()
-    {
-        Greenfoot.delay(20);
-        Greenfoot.setWorld(new GameOver(10));
-    }
-    
+
     private void scaleBackground() {
         GreenfootImage backgroundImage = getBackground();
         backgroundImage.scale(1000, 800);
         setBackground(backgroundImage);
+    }
+    
+    public void onLevelIncreased() {
+        IComponent enemyGroup = new Component();
+        enemyGroup.addChildren(level.getEnemyTroops());
+        enemyGroup.display(this);
+    }
+    
+    public void gameOver() {
+        if(gameOverCounter == 1) {
+            Greenfoot.delay(20);
+            Greenfoot.setWorld(new GameOver(10));
+        } else {
+            gameOverCounter--;
+        }
     }
 }
