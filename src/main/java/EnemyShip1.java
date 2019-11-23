@@ -14,7 +14,7 @@ public class EnemyShip1 extends EnemyShip {
         super(direction, x, y, LeafFactory.getLeafType("EnemyShip1", "enemy_ship_1.png", null, null));
     }
 
-    public void act() {
+    public void control() {
         // Add your action code here.
         checkMove();
         if (script == Script.NORMAL) {
