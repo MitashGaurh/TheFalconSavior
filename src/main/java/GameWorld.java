@@ -1,5 +1,6 @@
 import greenfoot.GreenfootImage;
 import greenfoot.World;
+import greenfoot.*;
 
 /**
  * Write a description of class GameWorld here.
@@ -54,10 +55,16 @@ class GameWorld extends World {
         gameScreen.addChild(firstPlayer);
         gameScreen.addChild(scoreBoardFirstPlayer);
         gameScreen.addChild(firstPlayerLifeGroup);
-
         gameScreen.display(this);
+        
     }
-
+    
+    public void gameOver()
+    {
+        Greenfoot.delay(20);
+        Greenfoot.setWorld(new GameOver(10));
+    }
+    
     private void scaleBackground() {
         GreenfootImage backgroundImage = getBackground();
         backgroundImage.scale(1000, 800);
