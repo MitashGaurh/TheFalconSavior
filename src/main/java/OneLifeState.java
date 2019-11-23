@@ -6,27 +6,19 @@
  */
 public class OneLifeState implements ILifeState {
 
-    ILifeStateMachine machine;
+    private ILifeStateMachine machine;
 
-    public OneLifeState(ILifeStateMachine m) {
+    OneLifeState(ILifeStateMachine m) {
         machine = m;
     }
 
     @Override
-    public void gotHit() {
-        this.gameOver();
+    public void onPlayerHit() {
+        machine.gameOver();
     }
-
+    
     @Override
-    public void powerUp() {
-        machine.setStateTwoLifeState();
+    public void onLifeUp() {
+        machine.setStateTwoLifeState();    
     }
-
-    @Override
-    public void gameOver() {
-
-        //Change screen
-
-    }
-
 }

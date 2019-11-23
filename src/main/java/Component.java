@@ -1,4 +1,4 @@
-import greenfoot.World;
+ import greenfoot.World;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +32,8 @@ public class Component implements IComponent {
             component.display(world);
         }
     }
-
-    IComponent removeComponent() {
-        IComponent component = null;
-        if (components.size() > 0) {
-            component = components.get(components.size() - 1);
-            components.remove(component);
-        }
-        return component;
+    
+    ArrayList<IComponent> getComponents() {
+        return components;
     }
 }

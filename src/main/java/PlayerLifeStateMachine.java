@@ -4,12 +4,14 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class PlayerLifeStateMachine implements ILifeStateMachine, IHitObserver {
+public class PlayerLifeStateMachine implements ILifeStateMachine, ILifeStateSubject {
     // instance variables - replace the example below with your own
     private OneLifeState oneLifeState;
     private TwoLifeState twoLifeState;
     private ThreeLifeState threeLifeState;
     private ILifeState currentLifeState;
+    
+    private ILifeStateObserver observer;
 
     PlayerLifeStateMachine() {
         oneLifeState = new OneLifeState(this);
@@ -20,13 +22,13 @@ public class PlayerLifeStateMachine implements ILifeStateMachine, IHitObserver {
     }
 
     @Override
-    public void gotHit() {
-        currentLifeState.gotHit();
+    public void onPlayerHit() {
+        currentLifeState.onPlayerHit();
     }
-
+    
     @Override
-    public void powerUp() {
-        currentLifeState.powerUp();
+    public void gameOver() {
+        notifyObserver();
     }
 
     @Override
@@ -43,10 +45,18 @@ public class PlayerLifeStateMachine implements ILifeStateMachine, IHitObserver {
     public void setStateThreeLifeState() {
         currentLifeState = threeLifeState;
     }
-
-
-    @Override
-    public void hitEventUpdate() {
-        this.gotHit();
+    
+    public void addObserver(ILifeStateObserver observer) {
+        this.observer = observer;
+    }
+    
+    public void removeObserver(ILifeStateObserver observer) {
+        
+    }
+    
+    public void notifyObserver() {
+        if (null != this.observer) {
+            observer.gameOver();
+        }
     }
 }

@@ -5,9 +5,7 @@
  * @version (a version number or a date)
  */
 public interface ILifeState {
-    void gotHit();
+    void onPlayerHit();
 
-    void powerUp();
-
-    void gameOver();
+    void onLifeUp();
 }

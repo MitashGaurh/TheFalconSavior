@@ -14,9 +14,11 @@ public class ScoreBoard extends Leaf implements IPlayerEventHandler {
      */
     private int score = 0;
     private IPlayerEventHandler nextHandler;
+    private Level level;
 
-    ScoreBoard(int x, int y) {
+    ScoreBoard(int x, int y, Level level) {
         super(x, y);
+        this.level = level;
     }
 
 
@@ -32,6 +34,7 @@ public class ScoreBoard extends Leaf implements IPlayerEventHandler {
 
     public void scoreUpdate() {
         this.score += 10;
+        level.levelIncrementCheck(10);
     }
 
     public boolean hasNext() {

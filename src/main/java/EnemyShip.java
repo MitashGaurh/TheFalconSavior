@@ -39,7 +39,7 @@ abstract class EnemyShip extends Leaf implements IProjectileOwner {
     }
 
     void moveDown() {
-        setLocation(getX(), getY() + 75);
+        setLocation(getX(), getY() + 90);
 
         script = Script.NORMAL;
     }
